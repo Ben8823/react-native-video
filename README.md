@@ -1,5 +1,7 @@
 ## react-native-video
 
+[![ci][4]][5]
+
 A `<Video>` component for react-native, as seen in
 [react-native-login](https://github.com/brentvatne/react-native-login)!
 
@@ -101,11 +103,11 @@ First select your project in Xcode.
 
 <img src="./docs/tvOS-step-1.jpg" width="40%">
 
-After that, select the tvOS target of your application and select « General » tab
+After that, select the tvOS target of your application and select « General » tab
 
 <img src="./docs/tvOS-step-2.jpg" width="40%">
 
-Scroll to « Linked Frameworks and Libraries » and tap on the + button
+Scroll to « Linked Frameworks and Libraries » and tap on the + button
 
 <img src="./docs/tvOS-step-3.jpg" width="40%">
 
@@ -126,13 +128,6 @@ Or if you have trouble, make the following additions to the given files manually
 #### **android/settings.gradle**
 
 The newer ExoPlayer library will work for most people.
-
-```gradle
-include ':react-native-video'
-project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android-exoplayer')
-```
-
-If you need to use the old Android MediaPlayer based player, use the following instead:
 
 ```gradle
 include ':react-native-video'
@@ -287,74 +282,83 @@ var styles = StyleSheet.create({
 ```
 
 ### Configurable props
-* [allowsExternalPlayback](#allowsexternalplayback)
-* [audioOnly](#audioonly)
-* [automaticallyWaitsToMinimizeStalling](#automaticallyWaitsToMinimizeStalling)
-* [bufferConfig](#bufferconfig)
-* [controls](#controls)
-* [currentPlaybackTime](#currentPlaybackTime)
-* [disableFocus](#disableFocus)
-* [filter](#filter)
-* [filterEnabled](#filterEnabled)
-* [fullscreen](#fullscreen)
-* [fullscreenAutorotate](#fullscreenautorotate)
-* [fullscreenOrientation](#fullscreenorientation)
-* [headers](#headers)
-* [hideShutterView](#hideshutterview)
-* [id](#id)
-* [ignoreSilentSwitch](#ignoresilentswitch)
-* [maxBitRate](#maxbitrate)
-* [minLoadRetryCount](#minLoadRetryCount)
-* [mixWithOthers](#mixWithOthers)
-* [muted](#muted)
-* [paused](#paused)
-* [pictureInPicture](#pictureinpicture)
-* [playInBackground](#playinbackground)
-* [playWhenInactive](#playwheninactive)
-* [poster](#poster)
-* [posterResizeMode](#posterresizemode)
-* [preferredForwardBufferDuration](#preferredForwardBufferDuration)
-* [preventsDisplaySleepDuringVideoPlayback](#preventsDisplaySleepDuringVideoPlayback)
-* [progressUpdateInterval](#progressupdateinterval)
-* [rate](#rate)
-* [repeat](#repeat)
-* [reportBandwidth](#reportbandwidth)
-* [resizeMode](#resizemode)
-* [selectedAudioTrack](#selectedaudiotrack)
-* [selectedTextTrack](#selectedtexttrack)
-* [selectedVideoTrack](#selectedvideotrack)
-* [source](#source)
-* [stereoPan](#stereopan)
-* [textTracks](#texttracks)
-* [trackId](#trackId)
-* [useTextureView](#usetextureview)
-* [volume](#volume)
+| Name |Plateforms Support  | 
+|--|--|
+|[allowsExternalPlayback](#allowsexternalplayback) |iOS |
+|[audioOnly](#audioonly)|All |
+|[automaticallyWaitsToMinimizeStalling](#automaticallyWaitsToMinimizeStalling) | iOS|
+|[bufferConfig](#bufferconfig)|Android ExoPlayer|
+|[controls](#controls)|Android ExoPlayer, iOS, react-native-dom|
+|[currentPlaybackTime](#currentPlaybackTime)|Android Exoplayer|
+|[disableFocus](#disableFocus)|Android Exoplayer, iOS|
+|[filter](#filter)|iOS|
+|[filterEnabled](#filterEnabled)|iOS|
+|[fullscreen](#fullscreen)|iOS|
+|[fullscreenAutorotate](#fullscreenautorotate)|iOS|
+|[fullscreenOrientation](#fullscreenorientation)|iOS|
+|[headers](#headers)|Android ExoPlayer|
+|[hideShutterView](#hideshutterview)|Android ExoPlayer|
+|[id](#id)|react-native-dom|
+|[ignoreSilentSwitch](#ignoresilentswitch)|iOS|
+|[maxBitRate](#maxbitrate)|Android ExoPlayer, iOS|
+|[minLoadRetryCount](#minLoadRetryCount)|Android ExoPlayer|
+|[mixWithOthers](#mixWithOthers)|iOS|
+|[muted](#muted)|All|
+|[paused](#paused)|All|
+|[pictureInPicture](#pictureinpicture)|iOS|
+|[playInBackground](#playinbackground)|Android ExoPlayer, iOS|
+|[playWhenInactive](#playwheninactive)|iOS|
+|[poster](#poster)|All|
+|[posterResizeMode](#posterresizemode)|All|
+|[preferredForwardBufferDuration](#preferredForwardBufferDuration)|iOS|
+| [preventsDisplaySleepDuringVideoPlayback](#preventsDisplaySleepDuringVideoPlayback)|iOS, Android|
+|[progressUpdateInterval](#progressupdateinterval)|All|
+|[rate](#rate)|All|
+|[repeat](#repeat)|All|
+|[reportBandwidth](#reportbandwidth)|Android ExoPlayer|
+|[resizeMode](#resizemode)|Android ExoPlayer, iOS, Windows UWP|
+|[selectedAudioTrack](#selectedaudiotrack)|Android ExoPlayer, iOS|
+|[selectedTextTrack](#selectedtexttrack)|Android ExoPlayer, iOS|
+|[selectedVideoTrack](#selectedvideotrack)|Android ExoPlayer|
+|[source](#source)|All|
+|[textTracks](#texttracks)|Android ExoPlayer, iOS|
+|[trackId](#trackId)|Android ExoPlayer|
+|[useTextureView](#usetextureview)|Android ExoPlayer|
+|[volume](#volume)|All|
+
 
 ### Event props
-* [onAudioBecomingNoisy](#onaudiobecomingnoisy)
-* [onBandwidthUpdate](#onbandwidthupdate)
-* [onEnd](#onend)
-* [onExternalPlaybackChange](#onexternalplaybackchange)
-* [onFullscreenPlayerWillPresent](#onfullscreenplayerwillpresent)
-* [onFullscreenPlayerDidPresent](#onfullscreenplayerdidpresent)
-* [onFullscreenPlayerWillDismiss](#onfullscreenplayerwilldismiss)
-* [onFullscreenPlayerDidDismiss](#onfullscreenplayerdiddismiss)
-* [onLoad](#onload)
-* [onLoadStart](#onloadstart)
-* [onReadyForDisplay](#onreadyfordisplay)
-* [onPictureInPictureStatusChanged](#onpictureinpicturestatuschanged)
-* [onPlaybackRateChange](#onplaybackratechange)
-* [onProgress](#onprogress)
-* [onSeek](#onseek)
-* [onRestoreUserInterfaceForPictureInPictureStop](#onrestoreuserinterfaceforpictureinpicturestop)
-* [onTimedMetadata](#ontimedmetadata)
+| Name |Plateforms Support  | 
+|--|--|
+|[onAudioBecomingNoisy](#onaudiobecomingnoisy)|Android ExoPlayer, iOS|
+|[onBandwidthUpdate](#onbandwidthupdate)|Android ExoPlayer|
+|[onBuffer](#onbuffer)|Android ExoPlayer, iOS|
+|[onEnd](#onend)|All|
+|[onExternalPlaybackChange](#onexternalplaybackchange)|iOS|
+|[onFullscreenPlayerWillPresent](#onfullscreenplayerwillpresent)|Android ExoPlayer, iOS|
+|[onFullscreenPlayerDidPresent](#onfullscreenplayerdidpresent)|Android ExoPlayer, iOS|
+|[onFullscreenPlayerWillDismiss](#onfullscreenplayerwilldismiss)|Android ExoPlayer, iOS|
+|[onFullscreenPlayerDidDismiss](#onfullscreenplayerdiddismiss)|Android ExoPlayer, iOS|
+|[onLoad](#onload)|All|
+|[onLoadStart](#onloadstart)|All|
+|[onReadyForDisplay](#onreadyfordisplay)|Android ExoPlayer, iOS, Web|
+|[onPictureInPictureStatusChanged](#onpictureinpicturestatuschanged)|iOS|
+|[onPlaybackRateChange](#onplaybackratechange)|All|
+|[onProgress](#onprogress)|All|
+|[onSeek](#onseek)|Android ExoPlayer, iOS, Windows UWP|
+|[onRestoreUserInterfaceForPictureInPictureStop](#onrestoreuserinterfaceforpictureinpicturestop)|iOS|
+|[onTimedMetadata](#ontimedmetadata)|Android ExoPlayer, iOS|
+
 
 ### Methods
-* [dismissFullscreenPlayer](#dismissfullscreenplayer)
-* [presentFullscreenPlayer](#presentfullscreenplayer)
-* [save](#save)
-* [restoreUserInterfaceForPictureInPictureStop](#restoreuserinterfaceforpictureinpicturestop)
-* [seek](#seek)
+| Name |Plateforms Support  | 
+|--|--|
+|[dismissFullscreenPlayer](#dismissfullscreenplayer)|Android ExoPlayer, iOS|
+|[presentFullscreenPlayer](#presentfullscreenplayer)|Android ExoPlayer, iOS|
+|[save](#save)|iOS|
+|[restoreUserInterfaceForPictureInPictureStop](#restoreuserinterfaceforpictureinpicturestop)|iOS|
+|[seek](#seek)|All|
+
 
 ### Configurable props
 
@@ -416,8 +420,6 @@ Determines whether to show player controls.
 * **true** - Show player controls
 
 Note on iOS, controls are always shown when in fullscreen mode.
-
-For Android MediaPlayer, you will need to build your own controls or use a package like [react-native-video-controls](https://github.com/itsnubix/react-native-video-controls) or [react-native-video-player](https://github.com/cornedor/react-native-video-player).
 
 Note on Android ExoPlayer, native controls are available by default. If needed, you can also add your controls or use a package like [react-native-video-controls].
 
@@ -489,7 +491,7 @@ Platforms: iOS
 * **landscape**
 * **portrait**
 
-Platforms: iOS
+Platforms: Android ExoPlayer, iOS
 
 #### headers
 Pass headers to the HTTP client. Can be used for authorization. Headers must be a part of the source object.
@@ -595,7 +597,7 @@ To use this feature on iOS, you must:
 * [Enable Background Audio](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionBasics/AudioSessionBasics.html#//apple_ref/doc/uid/TP40007875-CH3-SW3) in your Xcode project
 * Set the ignoreSilentSwitch prop to "ignore"
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### playWhenInactive
 Determine whether the media should continue playing when notifications or the Control Center are in front of the video.
@@ -650,8 +652,6 @@ Speed at which the media should play.
 
 Platforms: all
 
-Note: For Android MediaPlayer, rate is only supported on Android 6.0 and higher devices.
-
 #### repeat
 Determine whether to repeat the video when the end is reached
 * **false (default)** - Don't repeat the video
@@ -674,7 +674,7 @@ Determines how to resize the video when the frame doesn't match the raw video di
 * **"cover"** - Scale the video uniformly (maintain the video's aspect ratio) so that both dimensions (width and height) of the image will be equal to or larger than the corresponding dimension of the view (minus padding).
 * **"stretch"** - Scale width and height independently, This may change the aspect ratio of the src.
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS, Windows UWP
+Platforms: Android ExoPlayer, iOS, Windows UWP
 
 #### selectedAudioTrack
 Configure which audio track, if any, is played.
@@ -810,7 +810,7 @@ source={{ uri: 'file:///sdcard/Movies/sintel.mp4' }}
 
 Note: Your app will need to request permission to read external storage if you're accessing a file outside your app.
 
-Platforms: Android ExoPlayer, Android MediaPlayer, possibly others
+Platforms: Android ExoPlayer, possibly others
 
 ###### iPod Library (ipod-library://)
 
@@ -841,14 +841,6 @@ type: 'mpd' }}
 The following other types are supported on some platforms, but aren't fully documented yet:
 `content://, ms-appx://, ms-appdata://, assets-library://`
 
-
-#### stereoPan
-Adjust the balance of the left and right audio channels.  Any value between –1.0 and 1.0 is accepted.
-* **-1.0** - Full left
-* **0.0 (default)** - Center
-* **1.0** - Full right
-
-Platforms: Android MediaPlayer
 
 #### textTracks
 Load one or more "sidecar" text tracks. This takes an array of objects representing each track. Each object should have the format:
@@ -944,6 +936,24 @@ Note: On Android ExoPlayer, you must set the [reportBandwidth](#reportbandwidth)
 
 Platforms: Android ExoPlayer
 
+#### onBuffer
+Callback function that is called when the player buffers.
+
+Payload:
+
+Property | Type | Description
+--- | --- | ---
+isBuffering | boolean | Boolean indicating whether buffering is active
+
+Example:
+```
+{
+  isBuffering: true
+}
+```
+
+Platforms: Android ExoPlayer, iOS
+
 #### onEnd
 Callback function that is called when the player reaches the end of the media.
 
@@ -974,28 +984,28 @@ Callback function that is called when the player is about to enter fullscreen mo
 
 Payload: none
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### onFullscreenPlayerDidPresent
 Callback function that is called when the player has entered fullscreen mode.
 
 Payload: none
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### onFullscreenPlayerWillDismiss
 Callback function that is called when the player is about to exit fullscreen mode.
 
 Payload: none
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### onFullscreenPlayerDidDismiss
 Callback function that is called when the player has exited fullscreen mode.
 
 Payload: none
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### onLoad
 Callback function that is called when the media is loaded and ready to play.
@@ -1074,10 +1084,9 @@ Callback function that is called when the first video frame is ready for display
 Payload: none
 
 * iOS: [readyForDisplay](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/1615830-readyfordisplay?language=objc)
-* Android: [MEDIA_INFO_VIDEO_RENDERING_START](https://developer.android.com/reference/android/media/MediaPlayer#MEDIA_INFO_VIDEO_RENDERING_START)
 * Android ExoPlayer [STATE_READY](https://exoplayer.dev/doc/reference/com/google/android/exoplayer2/Player.html#STATE_READY)
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS, Web
+Platforms: Android ExoPlayer, iOS, Web
 
 #### onPictureInPictureStatusChanged
 Callback function that is called when picture in picture becomes active or inactive.
@@ -1113,7 +1122,7 @@ Platforms: all
 
 
 #### onProgress
-Callback function that is called every progressUpdateInterval seconds with info about which position the media is currently playing.
+Callback function that is called every progressUpdateInterval milliseconds with info about which position the media is currently playing.
 
 Property | Type | Description
 --- | --- | ---
@@ -1153,7 +1162,7 @@ Example:
 Both the currentTime & seekTime are reported because the video player may not seek to the exact requested position in order to improve seek performance.
 
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS, Windows UWP
+Platforms: Android ExoPlayer, iOS, Windows UWP
 
 #### onRestoreUserInterfaceForPictureInPictureStop
 Callback function that corresponds to Apple's [`restoreUserInterfaceForPictureInPictureStopWithCompletionHandler`](https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614703-pictureinpicturecontroller?language=objc). Call `restoreUserInterfaceForPictureInPictureStopCompleted` inside of this function when done restoring the user interface. 
@@ -1182,9 +1191,7 @@ Example:
 }
 ```
 
-Support for timed metadata on Android MediaPlayer is limited at best and only compatible with some videos. It requires a target SDK of 23 or higher.
-
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 ### Methods
 Methods operate on a ref to the Video element. You can create a ref using code like:
@@ -1205,7 +1212,7 @@ Example:
 this.player.dismissFullscreenPlayer();
 ```
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### presentFullscreenPlayer
 `presentFullscreenPlayer()`
@@ -1214,14 +1221,14 @@ Put the player in fullscreen mode.
 
 On iOS, this displays the video in a fullscreen view controller with controls.
 
-On Android ExoPlayer & MediaPlayer, this puts the navigation controls in fullscreen mode. It is not a complete fullscreen implementation, so you will still need to apply a style that makes the width and height match your screen dimensions to get a fullscreen video.
+On Android ExoPlayer, this puts the navigation controls in fullscreen mode. It is not a complete fullscreen implementation, so you will still need to apply a style that makes the width and height match your screen dimensions to get a fullscreen video.
 
 Example:
 ```
 this.player.presentFullscreenPlayer();
 ```
 
-Platforms: Android ExoPlayer, Android MediaPlayer, iOS
+Platforms: Android ExoPlayer, iOS
 
 #### save
 `save(): Promise`
@@ -1426,7 +1433,7 @@ android {
 ```
 
 #### ExoPlayer no longer detaches
-When using a router like the react-navigation TabNavigator, switching between tab routes would previously cause ExoPlayer to detach causing the video player to pause. We now don't detach the view, allowing the video to continue playing in a background tab. This matches the behavior for iOS. Android MediaPlayer will crash if it detaches when switching routes, so its behavior has not been changed.
+When using a router like the react-navigation TabNavigator, switching between tab routes would previously cause ExoPlayer to detach causing the video player to pause. We now don't detach the view, allowing the video to continue playing in a background tab. This matches the behavior for iOS.
 
 #### useTextureView now defaults to true
 The SurfaceView, which ExoPlayer has been using by default has a number of quirks that people are unaware of and often cause issues. This includes not supporting animations or scaling. It also causes strange behavior if you overlay two videos on top of each other, because the SurfaceView will [punch a hole](https://developer.android.com/reference/android/view/SurfaceView) through other views. Since TextureView doesn't have these issues and behaves in the way most developers expect, it makes sense to make it the default.
@@ -1480,8 +1487,10 @@ If you encounter an error `Could not find com.android.support:support-annotation
 - [ ] Bring API closer to HTML5 `<Video>` [reference](http://devdocs.io/html/element/video)
 
 [1]: https://github.com/brentvatne/react-native-login/blob/56c47a5d1e23781e86e19b27e10427fd6391f666/App/Screens/UserInfoScreen.js#L32-L35
-[2]: https://github.com/react-native-community/react-native-video/tree/master/example
+[2]: https://github.com/react-native-video/react-native-video/tree/master/examples
 [3]: https://developer.apple.com/library/ios/qa/qa1668/_index.html
+[4]: https://github.com/react-native-video/react-native-video/workflows/ci/badge.svg
+[5]: https://github.com/react-native-video/react-native-video/actions
 
 ---
 
