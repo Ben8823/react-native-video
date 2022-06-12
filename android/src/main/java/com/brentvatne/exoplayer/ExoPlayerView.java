@@ -16,8 +16,8 @@ import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.video.VideoListener;
 import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.text.Cue;
@@ -130,8 +130,8 @@ public final class ExoPlayerView extends FrameLayout {
      */
     public void setPlayer(SimpleExoPlayer player) {
         if (this.player != null) {
-            this.player.removeTextOutput(componentListener);
-            this.player.removeVideoListener(componentListener);
+            //this.player.removeTextOutput(componentListener);
+            //Player.Listene (componentListener);
             this.player.removeListener(componentListener);
             clearVideoView();
         }
@@ -139,9 +139,8 @@ public final class ExoPlayerView extends FrameLayout {
         shutterView.setVisibility(this.hideShutterView ? View.INVISIBLE : View.VISIBLE);
         if (player != null) {
             setVideoView();
-            player.addVideoListener(componentListener);
             player.addListener(componentListener);
-            player.addTextOutput(componentListener);
+            //player.addTextOutput(componentListener);
         }
     }
 
@@ -211,7 +210,7 @@ public final class ExoPlayerView extends FrameLayout {
         layout.invalidateAspectRatio();
     }
 
-    private final class ComponentListener implements VideoListener,
+    private final class ComponentListener implements Player.Listener,
             TextOutput, ExoPlayer.EventListener {
 
         // TextRenderer.Output implementation
@@ -223,7 +222,6 @@ public final class ExoPlayerView extends FrameLayout {
 
         // SimpleExoPlayer.VideoListener implementation
 
-        @Override
         public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
             boolean isInitialRatio = layout.getAspectRatio() == 0;
             layout.setAspectRatio(height == 0 ? 1 : (width * pixelWidthHeightRatio) / height);
@@ -251,7 +249,6 @@ public final class ExoPlayerView extends FrameLayout {
             // Do nothing.
         }
 
-        @Override
         public void onPlayerError(ExoPlaybackException e) {
             // Do nothing.
         }
@@ -261,7 +258,6 @@ public final class ExoPlayerView extends FrameLayout {
             // Do nothing.
         }
 
-        @Override
         public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
             // Do nothing.
         }
